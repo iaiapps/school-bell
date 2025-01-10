@@ -12,6 +12,6 @@ Auth::routes();
 Route::middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::resource('cluster', ClusterController::class);
-    Route::resource('schedule', ScheduleController::class);
     Route::resource('file', FileController::class);
+    Route::resource('schedule', ScheduleController::class);
 });

@@ -1,30 +1,34 @@
 @extends('layouts.app')
-@section('title', 'Kategori Bel')
+@section('title', 'File Bel')
 
 @section('content')
     <div class="card p-3">
         <div class="align-middle">
-            <p class="float-start fs-5 m-0">Kategori Bel yang aktif </p>
-            <p class="float-end"><a href="{{ route('cluster.create') }}" class="btn btn-primary">tambah kategori</a></p>
+            <p class="float-start fs-5 m-0">File Bel yang terupload </p>
+            <p class="float-end"><a href="{{ route('file.create') }}" class="btn btn-primary">Upload File</a></p>
         </div>
         <table class="table align-middle">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nama Kategori</th>
-                    <th scope="col">Aktif</th>
+                    <th scope="col">Nama Bel</th>
+                    <th scope="col">Palyer</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($clusters as $cluster)
+                @foreach ($files as $file)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $cluster->name }}</td>
-                        <td>{{ $cluster->active == 1 ? 'Aktif' : 'Non Aktif' }}</td>
+                        <td>{{ $file->name }}</td>
+                        <td><audio controls>
+                                <source src="{{ asset('sound-file/' . $file->file) }}" type="audio/mpeg">
+                            </audio>
+                        </td>
+                        <td>{{ $file->file }}</td>
                         <td>
-                            <a href="{{ route('cluster.edit', $cluster->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                            <form method="POST" action="{{ route('cluster.destroy', $cluster->id) }}" class="d-inline"
+                            <a href="{{ route('file.edit', $file->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                            <form method="POST" action="{{ route('file.destroy', $file->id) }}" class="d-inline"
                                 onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');">
                                 @csrf
                                 @method('DELETE')

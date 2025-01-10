@@ -10,8 +10,12 @@
                 <input type="text" class="form-control" id="name" name="name">
             </div>
             <div class="mb-3">
-                <label for="active" class="form-label">Aktif atau Non Aktif [1/0]</label>
-                <input type="text" class="form-control" id="active" name="active">
+                <label for="active" class="form-label">Aktif atau Tidak Aktif </label>
+                <select name="active" id="active" class="form-select">
+                    <option disabled>---pilih---</option>
+                    <option value="1">Aktif</option>
+                    <option value="0">Tidak Aktif</option>
+                </select>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

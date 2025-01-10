@@ -18,8 +18,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{{ asset('themes/vendor/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('themes/css/sb-admin-2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/css/styles.css') }}">
 
     @stack('css')
 </head>

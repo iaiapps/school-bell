@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FileController extends Controller
 {
@@ -12,7 +13,8 @@ class FileController extends Controller
      */
     public function index()
     {
-        return view('file.index');
+        $files = File::all();
+        return view('file.index', compact('files'));
     }
 
     /**
@@ -20,7 +22,7 @@ class FileController extends Controller
      */
     public function create()
     {
-        //
+        return view('file.create');
     }
 
     /**
@@ -28,7 +30,35 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        //cek id
+        $id = Auth::user()->id;
+
+        //validate
+        $soundFile = $request->validate([
+            'name' => 'required',
+            // 'type' => 'required',
+            'file' => 'nullable|mimes:audio/mpeg,mpga,mp3,wav,aac',
+        ]);
+
+        //beri nama
+        $file = $request->file('file');
+        $file_name = $id . '-user' . '-' . time() . '-' . $file->getClientOriginalName();
+
+        // simpan di folder public
+        $request->file('file')->move(public_path('sound-file'), $file_name);
+
+        // simpan di folder storage
+        // $request->file('file')->storeAs('public/sound-file', $file_name);
+
+        //masukkan ke array validate
+        $soundFile['file'] = $file_name;
+        // $soundFile['user_id'] = $id;
+
+        //simpan ke database
+        File::create($soundFile);
+
+        return redirect()->route('file.index')->with('success', 'Berhasil upload dokumen');
     }
 
     /**

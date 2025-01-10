@@ -1,13 +1,14 @@
 @extends('layouts.app')
-@section('title', 'Kategori Bel')
+@section('title', 'Kategori Jadwal')
 
 @section('content')
     <div class="card p-3">
         <div class="align-middle">
-            <p class="float-start fs-5 m-0">Kategori Bel yang aktif </p>
+            <p class="float-start fs-5 m-0">Kategori jadwal bel yang aktif </p>
             <p class="float-end"><a href="{{ route('cluster.create') }}" class="btn btn-primary">tambah kategori</a></p>
         </div>
-        <table class="table align-middle">
+        <hr>
+        <table class="table align-middle table-striped">
             <thead>
                 <tr>
                     <th scope="col">#</th>
