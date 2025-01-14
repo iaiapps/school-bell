@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
             $table->foreignId('cluster_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('day');
+            $table->foreignId('file_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
+            $table->string('day');
             $table->string('time');
-            $table->string('sound');
             $table->timestamps();
         });
     }

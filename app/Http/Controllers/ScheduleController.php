@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\File;
 use App\Models\Cluster;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
@@ -23,7 +24,8 @@ class ScheduleController extends Controller
     public function create()
     {
         $clusters = Cluster::all();
-        return view('schedule.create', compact('clusters'));
+        $files = File::all();
+        return view('schedule.create', compact('clusters', 'files'));
     }
 
     /**

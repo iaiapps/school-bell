@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $schedules = Schedule::with('file:id,file')->get();
+        // dd($schedules);
+        return view('home', compact('schedules'));
     }
 }

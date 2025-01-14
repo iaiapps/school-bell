@@ -10,4 +10,9 @@ class File extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function schedule()
+    {
+        return $this->hasMany(Schedule::class);
+    }
 }

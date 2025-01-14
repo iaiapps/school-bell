@@ -23,7 +23,7 @@
                 @foreach ($schedules as $schedule)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $schedule->cluster_id }}</td>
+                        <td>{{ $schedule->cluster->name }}</td>
                         <td>{{ $schedule->day }}</td>
                         <td>{{ $schedule->name }}</td>
                         <td>{{ $schedule->time }}</td>

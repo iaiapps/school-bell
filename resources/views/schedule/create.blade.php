@@ -9,7 +9,7 @@
                 <label for="name" class="form-label">Nama Kategori</label>
                 <select name="clsuter_id" id="cluster" class="form-select">
                     @foreach ($clusters as $cluster)
-                        <option value="">{{ $cluster->name }}</option>
+                        <option value="{{ $cluster->id }}">{{ $cluster->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -26,8 +26,12 @@
                 <input type="text" class="form-control" id="time" name="time">
             </div>
             <div class="mb-3">
-                <label for="sound" class="form-label">Sound</label>
-                <input type="text" class="form-control" id="sound" name="sound">
+                <label for="file" class="form-label">Pilih Sound</label>
+                <select name="file_id" id="file" class="form-select">
+                    @foreach ($files as $file)
+                        <option value="{{ $file->id }}">{{ $file->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
