@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Cluster;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 
@@ -24,8 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $schedules = Schedule::with('file:id,file')->get();
+        $kelompok = Cluster::where('active', 1)->first();
+        // dd($kelompok);
+        $hari = Carbon::today()->isoFormat('dddd');
+        $schedules = Schedule::where('cluster_id', $kelompok->id)->where('day', $hari)->with('file:id,file')->get();
         // dd($schedules);
-        return view('home', compact('schedules'));
+        return view('home', compact('schedules', 'kelompok'));
     }
 }

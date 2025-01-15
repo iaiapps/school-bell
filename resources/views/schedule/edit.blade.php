@@ -16,19 +16,19 @@
             </div>
             <div class="mb-3">
                 <label for="day" class="form-label">hari </label>
-                <input type="text" class="form-control" id="day" name="day">
+                <input type="text" class="form-control" id="day" name="day" value="{{ $schedule->day }}">
             </div>
             <div class="mb-3">
                 <label for="name" class="form-label">Nama</label>
-                <input type="text" class="form-control" id="name" name="name">
+                <input type="text" class="form-control" id="name" name="name" value="{{ $schedule->name }}">
             </div>
             <div class="mb-3">
                 <label for="time" class="form-label">Jam</label>
-                <input type="text" class="form-control" id="time" name="time">
+                <input type="text" class="form-control" id="time" name="time" value="{{ $schedule->time }}">
             </div>
             <div class="mb-3">
                 <label for="sound" class="form-label">Sound</label>
-                <input type="text" class="form-control" id="sound" name="sound">
+                <input type="text" class="form-control" id="sound" name="sound" value="{{ $schedule->file_id }}">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

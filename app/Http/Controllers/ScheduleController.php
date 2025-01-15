@@ -34,6 +34,7 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        // dd($data);
         Schedule::create($data);
         return redirect()->route('schedule.index');
     }
